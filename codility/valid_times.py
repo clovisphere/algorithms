@@ -13,7 +13,7 @@ def f(*args): # -> f(A, B, C, D) ~ we need four values
 
 
 if __name__ == '__main__':
-    # let's solution -- use py.test next time:-)
+    # let's "test" our solution -- use py.test next time, please:-)
     print(f'{f(1, 2, 3, 4)}')
     print(f'{f(0, 0, 0, 0)}')
     print(f'{f(12, 45, 0, 1)}')
