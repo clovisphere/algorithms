@@ -1,29 +1,33 @@
 """Given a non-empty string s and a dictionary word_dict 
-containing a list of non-empty words, determine if s is valid 
-based on all the dictionary words.
+containing a list of non-empty words, determine if s can be segmented into 
+a space-separated sequence of one or more dictionary words.
 
-Example 1
+Note:
+  - The same word in the dictionary may be reused multiple times in the segmentation. 
+  - You may assume the dictionary does not contain duplicate words.
 
-Input : s = 'Practice makes pefect', word_dict = ['practice', 'makes', 'perfect']
-Output: True
+Example 1:
+    Input : s = 'leetcode', word_dict = ['leet', 'code']
+    Output: True
 
-Example 2
+Example 2:
+    Input : s = 'applepenapple', word_dict = ['apple', 'pen']
+    Output: True
 
-Input : s = 'Practice makes perfect', word_dict = ['practice', 'perfect']
-Output: False
+Example 3
+    Input : s = 'catsanddog', word_dict = ['cats', 'dog', 'sand']
+    Output: False
 """
 
-
-def valid_sentence(s, word_dict):
-    if len(word_dict) != len(s): return False
-    # there's probably a "cleaner" way to solve this 
-    # but using a set wouldn't hurt:-)
-    A = set(s.lower().split(' '))
-    B = set([e.lower() for e in word_dict])
-    return True if len(A.difference(B)) == 0 else False
+def word_break(s, word_dict):
+    for word in word_dict:
+        if word not in s:
+            return False
+        s = s.replace(word, '')
+    # if s is empty then s can be segmented
+    return True if not s else False
 
 
 if __name__ == '__main__':
-    string = 'Practice makes perfect'
-    dictionary = ['practice', 'perfect']
-    print(f'\'{string}\', {dictionary}\nAnswer: {valid_sentence(string, dictionary)}')
+    s, word_dict = 'applepenapple', ['apple', 'pen']
+    print(f'{s}, {word_dict}\nAnswer: {word_break(s, word_dict)}')
