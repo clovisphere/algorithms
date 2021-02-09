@@ -17,7 +17,7 @@ Output: False
 def valid_sentence(s, word_dict):
     if len(word_dict) != len(s): return False
     # there's probably a "cleaner" way to solve this 
-    # but using sets doesn't hurt:-)
+    # but using a set wouldn't hurt:-)
     A = set(s.lower().split(' '))
     B = set([e.lower() for e in word_dict])
     return True if len(A.difference(B)) == 0 else False
